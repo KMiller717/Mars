@@ -7,7 +7,11 @@ using System.Threading.Tasks;
 
 namespace MarsRover.Models
 {
-    public class Mission
+    public interface IMission
+    {
+        void ConductMission();
+    }
+    public class Mission : IMission
     {
         public List<Rover> Rovers { get; set; }
         public Grid grid { get; set; }
@@ -17,25 +21,6 @@ namespace MarsRover.Models
             Rovers = rovers;
             grid = gridProvided;
         }
-        public Mission(string[] fileContents)
-        {
-            List<Rover> rovers = new List<Rover>();
-            List<string> newFileContents = fileContents.ToList();
-            Grid emptyGrid = new Grid();
-            newFileContents.RemoveAt(0);
-            while (true)
-            {
-                Rover rover = new Rover(newFileContents[0], newFileContents[1]);
-                rovers.Add(rover);
-                newFileContents.RemoveAt(0);
-                newFileContents.RemoveAt(0);
-
-                if (newFileContents.Count == 0) { break; }
-            }
-            Rovers = rovers;
-            grid = emptyGrid.CreateViaFileContents(fileContents);
-        }
-
 
         public void ConductMission()
         {

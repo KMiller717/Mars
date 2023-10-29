@@ -1,3 +1,4 @@
+using MarsRover.Enums;
 using MarsRover.Models;
 using MarsRover.Utility;
 using MarsRoverTest.Tests;
@@ -8,19 +9,35 @@ namespace MarsRoverTest.Tests
     public class SanitizeFileTests
     {
         [TestMethod]
-        public void TestFileShouldHaveNoEmptyLines()
+        public void TestFileCanCreateMissionRequirements()
         {
-            SanitizeFile sanitizeFile = new SanitizeFile { fileName = "../../../testData.txt" };
-            string[] fileContents = sanitizeFile.SanitizeFileContents(sanitizeFile.fileName);
-            var noEmptyLines = true;
-            foreach (var line in fileContents)
-            {
-                if(String.IsNullOrEmpty(line))
-                {
-                    noEmptyLines = false;
-                }
-            }
-            Assert.AreEqual(true, noEmptyLines);
+            SanitizeFile sanitizeFile = new SanitizeFile("../../../testData.txt");
+            //Grid
+            var expectedGridLongitude = 5;
+            var expectedGridLatitude = 5;
+            var actualGridLongitude = sanitizeFile.Grid.longitude;
+            var actualGridLatitude  = sanitizeFile.Grid.latitude;
+
+            
+            //Rover
+            var expectedRoverX = 1;
+            var expectedRoverY = 2;
+            var actualRoverX = sanitizeFile.Rovers[0].X;
+            var actualRoverY = sanitizeFile.Rovers[0].Y;
+
+            var expectedRoverHeader = DirectionType.N;
+            var actualRoverHeader = sanitizeFile.Rovers[0].heading;
+
+            var expectedCommandStr = "LMLMLMLMM";
+            var actualCommandStr = sanitizeFile.Rovers[0].CommandStr;
+
+            Assert.AreEqual(expectedGridLongitude, actualGridLongitude);
+            Assert.AreEqual(actualGridLatitude, expectedGridLatitude);
+            Assert.AreEqual(expectedRoverY, actualRoverY);
+            Assert.AreEqual(expectedRoverX, actualRoverX);
+            Assert.AreEqual(expectedRoverHeader, actualRoverHeader);
+            Assert.AreEqual(expectedCommandStr, actualCommandStr);
+
         }
     }
 }

@@ -28,10 +28,9 @@ namespace MarsRoverTest.Tests
         public void TestMissionCreation()
         {
             //arrange
-            var classToReadFile = new SanitizeFile { fileName = "../../../testData.txt" };
-            string[] fileContents = new string[0];
-            fileContents = classToReadFile.SanitizeFileContents(classToReadFile.fileName);
-            Mission mission = new Mission(fileContents);
+            var classToReadFile = new SanitizeFile("../../../testData.txt");
+
+            Mission mission = new Mission(classToReadFile.Rovers, classToReadFile.Grid);
             int roverCount = mission.Rovers.Count;
 
             Assert.AreEqual(roverCount, 1);

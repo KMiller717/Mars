@@ -13,11 +13,21 @@ using System.Text.RegularExpressions;
 
 namespace MarsRover.Models
 {
-    public class Rover
+    public interface IRover
+    {
+        void CompleteMission(Grid grid);
+        void ExecuteCommand(Grid grid, string commands);
+        void TurnLeft();
+        void TurnRight();
+        void MoveForward();
+
+    }
+
+    public class Rover:IRover
     {
         public int X { get; set; }
         public int Y { get; set; }
-        public CompassType heading { get; set; }
+        public DirectionType heading { get; set; }
         public string CommandStr { get; set; }
 
         List<Rover> rover = new List<Rover>(0);
@@ -31,7 +41,7 @@ namespace MarsRover.Models
                 var startingInstructions = regex.Matches(locationStr);
                 X = int.Parse(startingInstructions[0].Value);
                 Y = int.Parse(startingInstructions[1].Value);
-                heading = (CompassType)Enum.Parse(typeof(CompassType), startingInstructions[2].Value);
+                heading = (DirectionType)Enum.Parse(typeof(DirectionType), startingInstructions[2].Value);
                 CommandStr = commandStr;
             }
             else
@@ -54,20 +64,20 @@ namespace MarsRover.Models
             return $"Rover is currently at: ({X}, {Y}), heading {heading}";
         }
 
-        private void ExecuteCommand(Grid grid, string command)
+        public void ExecuteCommand(Grid grid, string command)
         {
             foreach (var c in command)
             {
-               
-                switch (c)
+                CommandType compare = (CommandType)Enum.Parse(typeof(CommandType), c.ToString());
+                switch (compare)
                 {
-                    case ('L'):
+                    case (CommandType.L):
                         TurnLeft();
                         break;
-                    case ('R'):
+                    case (CommandType.R):
                         TurnRight();
                         break;
-                    case ('M'):
+                    case (CommandType.M):
                         MoveForward();
                         break;
                     default:
@@ -84,29 +94,29 @@ namespace MarsRover.Models
 
         public void TurnLeft()
         {
-            heading = (heading - 1) < CompassType.N ? CompassType.W : heading - 1;
+            heading = (heading - 1) < DirectionType.N ? DirectionType.W : heading - 1;
         }
 
         public void TurnRight()
         {
-            heading = (heading + 1) > CompassType.W ? CompassType.N : heading + 1;
+            heading = (heading + 1) > DirectionType.W ? DirectionType.N : heading + 1;
         }
 
         public void MoveForward()
         {
-            if (heading == CompassType.N)
+            if (heading == DirectionType.N)
             {
                 Y++;
             }
-            else if (heading == CompassType.E)
+            else if (heading == DirectionType.E)
             {
                 X++;
             }
-            else if (heading == CompassType.S)
+            else if (heading == DirectionType.S)
             {
                 Y--;
             }
-            else if (heading == CompassType.W)
+            else if (heading == DirectionType.W)
             {
                 X--;
             }

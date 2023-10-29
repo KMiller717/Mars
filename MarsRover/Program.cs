@@ -16,18 +16,9 @@ namespace MarsRover
     {
         static void Main(string[] args)
         {
-            var classToReadFile = new SanitizeFile { fileName = "../../../sample.txt" };
-            string[] fileContents = new string[0];
+            var classToReadFile = new SanitizeFile("../../../sample.txt" );
 
-            try
-            {
-                fileContents = classToReadFile.SanitizeFileContents(classToReadFile.fileName);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"An error occured when trying to read the file: {ex.Message}");
-            }
-            Mission mission = new Mission(fileContents);
+            Mission mission = new Mission(classToReadFile.Rovers, classToReadFile.Grid);
 
             try
             {

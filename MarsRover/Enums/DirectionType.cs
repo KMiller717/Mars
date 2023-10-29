@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MarsRover.Enums
 {
-    public enum CompassType
+    public enum DirectionType
     {
         N=1,
         E=2,
