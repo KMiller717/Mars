@@ -14,19 +14,19 @@ namespace MarsRover.Models
     public class Mission : IMission
     {
         public List<Rover> Rovers { get; set; }
-        public Grid grid { get; set; }
+        public Grid Grid { get; set; }
 
         public Mission(List<Rover> rovers, Grid gridProvided)
         {
             Rovers = rovers;
-            grid = gridProvided;
+            Grid = gridProvided;
         }
 
         public void ConductMission()
         {
             foreach(Rover rover in Rovers)
             {
-                rover.CompleteMission(grid);
+                rover.CompleteMission(Grid);
                 rover.CurrentPosition();
             }
         }

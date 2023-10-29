@@ -28,28 +28,28 @@ namespace MarsRoverTest.Tests
         {
             Assert.AreEqual(1, rover.X);
             Assert.AreEqual(2, rover.Y);
-            Assert.AreEqual(MarsRover.Enums.DirectionType.N, rover.heading);
+            Assert.AreEqual(MarsRover.Enums.DirectionType.N, rover.Heading);
             Assert.AreEqual("LMLMLMLMM", rover.CommandStr);
         }
         [TestMethod]
         public void TestTurnLeft()
         {
             rover.TurnLeft();
-            Assert.AreEqual(MarsRover.Enums.DirectionType.W, rover.heading);
+            Assert.AreEqual(MarsRover.Enums.DirectionType.W, rover.Heading);
         }
 
         [TestMethod]
         public void TestTurnRight()
         {
             rover.TurnRight();
-            Assert.AreEqual(MarsRover.Enums.DirectionType.E, rover.heading);
+            Assert.AreEqual(MarsRover.Enums.DirectionType.E, rover.Heading);
         }
         
         [TestMethod]
         public void TestMoveForward()
         {
             rover.MoveForward();
-            Assert.AreEqual(MarsRover.Enums.DirectionType.N, rover.heading);
+            Assert.AreEqual(MarsRover.Enums.DirectionType.N, rover.Heading);
             Assert.AreEqual(rover.Y, 3);
         }
     }

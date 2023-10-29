@@ -34,8 +34,8 @@ namespace MarsRoverTest.Tests
             int roverCount = mission.Rovers.Count;
 
             Assert.AreEqual(roverCount, 1);
-            Assert.AreEqual(mission.grid.latitude, 5);
-            Assert.AreEqual(mission.grid.longitude, 5);
+            Assert.AreEqual(mission.Grid.XAxisLength, 5);
+            Assert.AreEqual(mission.Grid.YAxisLength, 5);
         }
 
         [TestMethod]

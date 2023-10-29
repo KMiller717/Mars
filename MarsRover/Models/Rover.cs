@@ -27,7 +27,7 @@ namespace MarsRover.Models
     {
         public int X { get; set; }
         public int Y { get; set; }
-        public DirectionType heading { get; set; }
+        public DirectionType Heading { get; set; }
         public string CommandStr { get; set; }
 
         List<Rover> rover = new List<Rover>(0);
@@ -41,7 +41,7 @@ namespace MarsRover.Models
                 var startingInstructions = regex.Matches(locationStr);
                 X = int.Parse(startingInstructions[0].Value);
                 Y = int.Parse(startingInstructions[1].Value);
-                heading = (DirectionType)Enum.Parse(typeof(DirectionType), startingInstructions[2].Value);
+                Heading = (DirectionType)Enum.Parse(typeof(DirectionType), startingInstructions[2].Value);
                 CommandStr = commandStr;
             }
             else
@@ -53,15 +53,12 @@ namespace MarsRover.Models
 
         public void CompleteMission(Grid grid)
         {
-            foreach(var command in CommandStr)
-            {
-                ExecuteCommand(grid, command.ToString());
-            }
+            ExecuteCommand(grid, CommandStr);
         }
         public string CurrentPosition()
         {
-            Console.WriteLine("Rover is currently at: ({0}, {1}), heading {2}", X, Y, heading);
-            return $"Rover is currently at: ({X}, {Y}), heading {heading}";
+            Console.WriteLine("Rover is currently at: ({0}, {1}), heading {2}", X, Y, Heading);
+            return $"Rover is currently at: ({X}, {Y}), heading {Heading}";
         }
 
         public void ExecuteCommand(Grid grid, string command)
@@ -83,7 +80,7 @@ namespace MarsRover.Models
                     default:
                         throw new Exception(string.Format("Invalid command, {0}, given.  Please verify directions and re-try.", command));
                 }
-                if (X < 0 || X > grid.latitude || Y < 0 || Y > grid.longitude)
+                if (X < 0 || X > grid.XAxisLength || Y < 0 || Y > grid.YAxisLength)
                 {
                     Console.WriteLine("Oops, silly NASA instructions - you fell off the map!");
                     Environment.Exit(0);
@@ -94,29 +91,29 @@ namespace MarsRover.Models
 
         public void TurnLeft()
         {
-            heading = (heading - 1) < DirectionType.N ? DirectionType.W : heading - 1;
+            Heading = (Heading - 1) < DirectionType.N ? DirectionType.W : Heading - 1;
         }
 
         public void TurnRight()
         {
-            heading = (heading + 1) > DirectionType.W ? DirectionType.N : heading + 1;
+            Heading = (Heading + 1) > DirectionType.W ? DirectionType.N : Heading + 1;
         }
 
         public void MoveForward()
         {
-            if (heading == DirectionType.N)
+            if (Heading == DirectionType.N)
             {
                 Y++;
             }
-            else if (heading == DirectionType.E)
+            else if (Heading == DirectionType.E)
             {
                 X++;
             }
-            else if (heading == DirectionType.S)
+            else if (Heading == DirectionType.S)
             {
                 Y--;
             }
-            else if (heading == DirectionType.W)
+            else if (Heading == DirectionType.W)
             {
                 X--;
             }

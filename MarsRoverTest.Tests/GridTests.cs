@@ -22,9 +22,9 @@ namespace MarsRoverTest.Tests
         {
             var classToReadFile = new SanitizeFile("../../../testData.txt" );
         
-            Grid grid = new Grid(classToReadFile.Grid.longitude, classToReadFile.Grid.latitude);
-            Assert.AreEqual(5, grid.latitude);
-            Assert.AreEqual(5, grid.longitude);
+            Grid grid = new Grid(classToReadFile.Grid.XAxisLength, classToReadFile.Grid.YAxisLength);
+            Assert.AreEqual(5, grid.XAxisLength);
+            Assert.AreEqual(5, grid.YAxisLength);
         }
     }
     

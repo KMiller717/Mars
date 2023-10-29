@@ -15,8 +15,8 @@ namespace MarsRoverTest.Tests
             //Grid
             var expectedGridLongitude = 5;
             var expectedGridLatitude = 5;
-            var actualGridLongitude = sanitizeFile.Grid.longitude;
-            var actualGridLatitude  = sanitizeFile.Grid.latitude;
+            var actualGridLongitude = sanitizeFile.Grid.YAxisLength;
+            var actualGridLatitude  = sanitizeFile.Grid.XAxisLength;
 
             
             //Rover
@@ -26,7 +26,7 @@ namespace MarsRoverTest.Tests
             var actualRoverY = sanitizeFile.Rovers[0].Y;
 
             var expectedRoverHeader = DirectionType.N;
-            var actualRoverHeader = sanitizeFile.Rovers[0].heading;
+            var actualRoverHeader = sanitizeFile.Rovers[0].Heading;
 
             var expectedCommandStr = "LMLMLMLMM";
             var actualCommandStr = sanitizeFile.Rovers[0].CommandStr;

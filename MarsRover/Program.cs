@@ -16,9 +16,9 @@ namespace MarsRover
     {
         static void Main(string[] args)
         {
-            var classToReadFile = new SanitizeFile("../../../sample.txt" );
+            SanitizeFile postSanitizationMissionObjects = new SanitizeFile("../../../sample.txt" );
 
-            Mission mission = new Mission(classToReadFile.Rovers, classToReadFile.Grid);
+            Mission mission = new Mission(postSanitizationMissionObjects.Rovers, postSanitizationMissionObjects.Grid);
 
             try
             {

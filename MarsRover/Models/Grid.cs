@@ -12,12 +12,12 @@ namespace MarsRover.Models
 
     public class Grid
     {
-        public int longitude {get; } //length of grid's y-axis
-        public int latitude { get; }  //length of grid's x-axis
-        public Grid(int longitudeY, int latitudeX)
+        public int YAxisLength {get; } //length of grid's y-axis
+        public int XAxisLength { get; }  //length of grid's x-axis
+        public Grid(int longitude, int latitude)
         {
-            longitude = longitudeY;
-            latitude = latitudeX;
+            YAxisLength = longitude;
+            XAxisLength = latitude;
         }
 
     }
