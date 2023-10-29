@@ -36,23 +36,6 @@ namespace MarsRover.Models
             grid = emptyGrid.CreateViaFileContents(fileContents);
         }
 
-        public Mission CreateRoversAndGrid(List<string> newFileContents)
-        {
-            List<Rover> rovers = new List<Rover>();
-
-            while (true)
-            {
-                Rover rover = new Rover(newFileContents[0], newFileContents[1]);
-                rovers.Add(rover);
-                newFileContents.RemoveAt(0);
-                newFileContents.RemoveAt(0);
-
-                if (newFileContents.Count == 0) { break; }
-            }
-            Rovers = rovers;
-            Mission mission = new Mission(rovers, grid);
-            return mission;
-        }
 
         public void ConductMission()
         {

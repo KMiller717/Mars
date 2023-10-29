@@ -28,16 +28,15 @@ namespace MarsRoverTest.Tests
         public void TestMissionCreation()
         {
             //arrange
-            List<string> newFileContents = new List<string>();
-            newFileContents.Add("1 2 N");
-            newFileContents.Add("LMLMLMLMM");
-            
-            mission.CreateRoversAndGrid(newFileContents);
+            var classToReadFile = new SanitizeFile { fileName = "../../../testData.txt" };
+            string[] fileContents = new string[0];
+            fileContents = classToReadFile.SanitizeFileContents(classToReadFile.fileName);
+            Mission mission = new Mission(fileContents);
             int roverCount = mission.Rovers.Count;
-            Grid grid = mission.grid;           
+
             Assert.AreEqual(roverCount, 1);
-            Assert.AreEqual(grid.latitude, 5);
-            Assert.AreEqual(grid.longitude, 5);
+            Assert.AreEqual(mission.grid.latitude, 5);
+            Assert.AreEqual(mission.grid.longitude, 5);
         }
 
         [TestMethod]
@@ -47,7 +46,7 @@ namespace MarsRoverTest.Tests
             rovers.Add(new Rover("1 2 N", "LMLMLMLMM"));
             Grid grid = new Grid(5, 5);
             Mission newMission = new Mission(rovers, grid);
-            newMission.ConductMission(mission);
+            newMission.ConductMission();
 
             //compare outcome
             var expectedOutcome = "Rover is currently at: (1, 3), heading N";
@@ -67,7 +66,7 @@ namespace MarsRoverTest.Tests
             rovers.Add(new Rover("3 3 E", "MMRM"));
             Grid grid = new Grid(5, 5);
             Mission newMission = new Mission(rovers, grid);
-            newMission.ConductMission(mission);
+            newMission.ConductMission();
 
             //compare outcome
             var expectedOutcomeRover1 = "Rover is currently at: (1, 3), heading N";
