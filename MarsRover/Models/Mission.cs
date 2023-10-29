@@ -18,7 +18,7 @@ namespace MarsRover.Models
             grid = gridProvided;
         }
 
-        public Mission StartMission(List<string> newFileContents)
+        public Mission CreateRoversAndGrid(List<string> newFileContents)
         {
             List<Rover> rovers = new List<Rover>();
 

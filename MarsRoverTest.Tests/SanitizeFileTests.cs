@@ -8,7 +8,7 @@ namespace MarsRoverTest.Tests
     public class SanitizeFileTests
     {
         [TestMethod]
-        public void FileShouldHaveNoEmptyLines()
+        public void TestFileShouldHaveNoEmptyLines()
         {
             SanitizeFile sanitizeFile = new SanitizeFile { fileName = "../../../testData.txt" };
             string[] fileContents = sanitizeFile.SanitizeFileContents(sanitizeFile.fileName);

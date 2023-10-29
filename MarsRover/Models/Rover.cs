@@ -48,9 +48,10 @@ namespace MarsRover.Models
                 ExecuteCommand(grid, command.ToString());
             }
         }
-        public void CurrentPosition()
+        public string CurrentPosition()
         {
             Console.WriteLine("Rover is currently at: ({0}, {1}), heading {2}", X, Y, heading);
+            return $"Rover is currently at: ({X}, {Y}), heading {heading}";
         }
 
         private void ExecuteCommand(Grid grid, string command)
@@ -81,17 +82,17 @@ namespace MarsRover.Models
         }
 
 
-        private void TurnLeft()
+        public void TurnLeft()
         {
             heading = (heading - 1) < CompassType.N ? CompassType.W : heading - 1;
         }
 
-        private void TurnRight()
+        public void TurnRight()
         {
             heading = (heading + 1) > CompassType.W ? CompassType.N : heading + 1;
         }
 
-        private void MoveForward()
+        public void MoveForward()
         {
             if (heading == CompassType.N)
             {

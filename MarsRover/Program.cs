@@ -51,7 +51,7 @@ namespace MarsRover
             try
             {
                 Mission mission = new Mission(rovers, grid);
-                mission.StartMission(newFileContents); //Create Rovers
+                mission.CreateRoversAndGrid(newFileContents); //Create Rovers
                 mission.ConductMission(mission);
             }
             catch (Exception ex)
