@@ -16,7 +16,6 @@ namespace MarsRover
     {
         static void Main(string[] args)
         {
-            //Read and santize file
             var classToReadFile = new SanitizeFile { fileName = "../../../sample.txt" };
             string[] fileContents = new string[0];
 
@@ -28,30 +27,10 @@ namespace MarsRover
             {
                 Console.WriteLine($"An error occured when trying to read the file: {ex.Message}");
             }
+            Mission mission = new Mission(fileContents);
 
-            //Create Grid
-            Grid grid = new Grid();
             try
             {
-                grid = grid.CreateViaFileContents(fileContents);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"An error occured when trying to read the file: {ex.Message}");
-            }
-
-            //Remove grid instructions now that grid is created
-            List<string> newFileContents = fileContents.ToList();
-            newFileContents.RemoveAt(0);
-
-            //Empty rover list to start. 
-            List<Rover> rovers = new List<Rover>();
-
-            //Mission is a Go! Let's do this.
-            try
-            {
-                Mission mission = new Mission(rovers, grid);
-                mission.CreateRoversAndGrid(newFileContents); //Create Rovers
                 mission.ConductMission(mission);
             }
             catch (Exception ex)
