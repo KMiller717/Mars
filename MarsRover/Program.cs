@@ -31,7 +31,7 @@ namespace MarsRover
 
             try
             {
-                mission.ConductMission(mission);
+                mission.ConductMission();
             }
             catch (Exception ex)
             {

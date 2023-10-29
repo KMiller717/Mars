@@ -54,11 +54,11 @@ namespace MarsRover.Models
             return mission;
         }
 
-        public void ConductMission(Mission mission)
+        public void ConductMission()
         {
             foreach(Rover rover in Rovers)
             {
-                rover.CompleteMission(mission.grid);
+                rover.CompleteMission(grid);
                 rover.CurrentPosition();
             }
         }
