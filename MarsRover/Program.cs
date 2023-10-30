@@ -16,7 +16,9 @@ namespace MarsRover
     {
         static void Main(string[] args)
         {
-            SanitizeFile postSanitizationMissionObjects = new SanitizeFile("../../../sample.txt" );
+            string workingDirectory = Environment.CurrentDirectory;
+            string projectDirectory = Directory.GetParent(workingDirectory).Parent.Parent.FullName;
+            SanitizeFile postSanitizationMissionObjects = new SanitizeFile($"{projectDirectory}/sample.txt" );
 
             Mission mission = new Mission(postSanitizationMissionObjects.Rovers, postSanitizationMissionObjects.Grid);
 

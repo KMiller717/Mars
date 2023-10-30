@@ -11,7 +11,9 @@ namespace MarsRoverTest.Tests
         [TestMethod]
         public void TestFileCanCreateMissionRequirements()
         {
-            SanitizeFile sanitizeFile = new SanitizeFile("../../../testData.txt");
+            string workingDirectory = Environment.CurrentDirectory;
+            string projectDirectory = Directory.GetParent(workingDirectory).Parent.Parent.FullName;
+            SanitizeFile sanitizeFile = new SanitizeFile($"{projectDirectory}/testData.txt");
             //Grid
             var expectedGridLongitude = 5;
             var expectedGridLatitude = 5;
