@@ -1,6 +1,6 @@
 # Mars
 To Run:
-Project comes with a file, "sample.txt" which contains the Input data.  Add instructions in that file test various scenarios for the rover. 
+Project comes with a file, "sample.txt" which contains the Input data.  Add instructions in that file to test various scenarios for the rover. 
 
 
 Task:
