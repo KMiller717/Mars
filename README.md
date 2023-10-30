@@ -3,7 +3,11 @@ To Run:
 Project comes with a file, "sample.txt" which contains the Input data.  Add instructions in that file to test various scenarios for the rover - it has 
 inital data if you just want to run as is. 
 For the most part, the project assumes that the instructions provided contain three lines consisting of grid, initial coordinates, and command string. 
-The Rover should account for going out of bounds - bad job NASA engineers - let's try to keep the Rover within the map :)  Thanks for the challenge - 
+The Rover should account for going out of bounds - bad job NASA engineers - let's try to keep the Rover within the map :)  
+
+There is also a test project - MarsRoverTest.Tests - that contains an intro into unit tests.  
+
+Thanks for the challenge - 
 this was a fun one!
 
 
