@@ -16,13 +16,6 @@ namespace MarsRoverTest.Tests
     [TestClass]
     public class MissionTests
     {
-        public Mission mission { get; set; }
-        public MissionTests()
-        {
-            Grid grid = new Grid(5, 5);
-            List<Rover> rovers = new List<Rover>();
-            this.mission = new Mission(rovers, grid);
-        }
 
         [TestMethod]
         public void TestMissionCreation()
