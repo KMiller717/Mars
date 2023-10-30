@@ -16,14 +16,17 @@ namespace MarsRover
     {
         static void Main(string[] args)
         {
+            //grab file from Root of project
             string workingDirectory = Environment.CurrentDirectory;
             string projectDirectory = Directory.GetParent(workingDirectory).Parent.Parent.FullName;
             SanitizeFile postSanitizationMissionObjects = new SanitizeFile($"{projectDirectory}/sample.txt" );
 
+            //create the Mission from file info
             Mission mission = new Mission(postSanitizationMissionObjects.Rovers, postSanitizationMissionObjects.Grid);
 
             try
             {
+                //Let's do this!
                 mission.ConductMission();
             }
             catch (Exception ex)
