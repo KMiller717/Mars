@@ -1,8 +1,13 @@
 # Mars
+To Run:
+Project comes with a file, "sample.txt" which contains the Input data.  Add instructions in that file to test various scenarios for the rover - it has 
+inital data if you just want to run as is. 
+For the most part, the project assumes that the instructions provided contain three lines consisting of grid, initial coordinates, and command string. 
+The Rover should account for going out of bounds - bad job NASA engineers - let's try to keep the Rover within the map :)  Thanks for the challenge - 
+this was a fun one!
 
-Add instructions in the sample.txt file. 
 
-
+Task:
 NASA intends to land robotic rovers on Mars to explore a particularly curious-looking plateau. The rovers must
 navigate this rectangular plateau in a way so that their on board cameras can get a complete image of the
 surrounding terrain to send back to Earth.
