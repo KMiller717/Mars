@@ -1,6 +1,6 @@
 # Mars
 
-Add instructions in the sample.txt file. 
+Project comes with a file, "sample.txt" which contains the Input data.  Add instructions in that file test various scenarios for the rover. 
 
 
 NASA intends to land robotic rovers on Mars to explore a particularly curious-looking plateau. The rovers must
