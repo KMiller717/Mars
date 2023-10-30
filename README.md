@@ -1,8 +1,9 @@
 # Mars
-
+To Run:
 Project comes with a file, "sample.txt" which contains the Input data.  Add instructions in that file test various scenarios for the rover. 
 
 
+Task:
 NASA intends to land robotic rovers on Mars to explore a particularly curious-looking plateau. The rovers must
 navigate this rectangular plateau in a way so that their on board cameras can get a complete image of the
 surrounding terrain to send back to Earth.
